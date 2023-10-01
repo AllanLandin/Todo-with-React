@@ -4,6 +4,14 @@
 /node_modules
 /.pnp
 .pnp.js
+/.vscode
+App.test.js
+index.css
+index.jsreportWebVitals
+setupTests.js
+package.lock.json
+package.json
+
 
 # testing
 /coverage

@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from "react"
+import "./styles/App.css"
+import Header from "./components/Header"
+import Form from "./components/Form"
+import List from "./components/List"
+import Modal from "./components/Modal"
 
-function App() {
+function App(){
+  const [tasks, setTasks] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+
+  function addTask(task){
+    setTasks([...tasks, task])
+    onHideModal()
+  }
+
+  function onHideModal(){
+    setShowModal(false)
+  }
+  function onShowModal(){
+    setShowModal(true)
+  }
+
+  function deleteTask(idTask){
+    let newArray = tasks.filter(item => item.id != idTask)
+    setTasks(newArray)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header onShowModal={onShowModal}></Header>
+      <Modal onHideModal={onHideModal} modal={showModal}><Form onAddTask={addTask}></Form></Modal>
+      <List tasks={tasks} deleteTask={deleteTask}></List>
     </div>
-  );
+  )
 }
 
 export default App;
