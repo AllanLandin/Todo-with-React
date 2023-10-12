@@ -1,7 +1,5 @@
 import React from "react";
 
-
-
 function Modal(props){
     function hideModal(event){
         if (event.target.className === "modal"){

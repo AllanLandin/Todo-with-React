@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import Task from "./Task";
+import task from "../scripts/task";
 
 function Form(props){
     const [title, setTitle] = useState("");
@@ -21,7 +21,7 @@ function Form(props){
     function addTask(event){
         event.preventDefault()
         if (text){  
-            let newTask = new Task(title, text, dueDate)
+            let newTask = new task(title, text, dueDate)
             props.onAddTask(newTask)
             setText("")
             setDueDate("");
